@@ -21,9 +21,31 @@
     />
     <!-- Css -->
     <link rel="stylesheet" href="style.css" />
-    <title>Quote Generator</title>
+    <title>Quote Generator JS</title>
   </head>
   <body>
+    <main>
+      <section class="quote-container" id="quote-container">
+        <h2 aria-placeholder="quote generator"><!--Quote Generator--></h2>
+        <!-- Quote -->
+        <blockquote class="quote-text">
+          <p id="quote">
+            <i class="fas fa-quote-left"></i>
+            What you are is what you have been, What you'll be is what you do
+            now.
+          </p>
+        </blockquote>
+        <!-- Author -->
+        <p class="quote-author" id="author">-- Budda</p>
+        <!-- Buttons -->
+        <div class="button-container">
+          <button class="twitter-button" id="twitter" title="Tweet this!">
+            <i class="fab fa-twitter"></i>
+          </button>
+          <button id="new-quote">New Quote</button>
+        </div>
+      </section>
+    </main>
     <!-- Script -->
     <script src="script.js"></script>
   </body>
