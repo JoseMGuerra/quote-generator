@@ -7,19 +7,19 @@ const loader = document.getElementById("loader");
 
 let apiQuotes = [];
 
-// Show Loading
-function loading() {
+function showLoadingSpinner() {
   loader.hidden = false;
   quoteContainer.hidden = true;
 }
-// Hide Loading
-function complete() {
-  quoteContainer.hidden = false;
-  loader.hidden = true;
+function removeLoadingSpinner() {
+  if (!loader.hidden) {
+    quoteContainer.hidden = false;
+    loader.hidden = true;
+  }
 }
 
-function newQuote() {
-  loading();
+function getNewQuote() {
+  showLoadingSpinner();
   // Pick a Random quote from apiQuotes
   const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
 
@@ -31,38 +31,40 @@ function newQuote() {
   }
 
   // Check Quote length to determine styling
-  if (quote.text.length > 110) {
+  if (quote.text.length > 120) {
     quoteText.classList.add("long-quote");
   } else {
     quoteText.classList.remove("long-quote");
   }
-  // Set Quote, Hide loader
+  // Set Quote
   quoteText.textContent = quote.text;
-  complete();
+  removeLoadingSpinner();
 }
 
 function twitterQuote() {
-  const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.textContent} ${authorText.textContent}`;
+  const author = authorText.textContent;
+  const text = quoteText.textContent;
+  const twitterUrl = `https://twitter.com/intent/tweet?text=${text} ${author}`;
   window.open(twitterUrl, "_blank");
 }
 
-// Get Quotes From Api
-async function getQuotes() {
-  loading();
+async function getQuoteFromApi() {
+  showLoadingSpinner();
   const apiUrl = "https://josemguerra.github.io/quotes-api/data/quotes.json";
   try {
     const response = await fetch(apiUrl);
     apiQuotes = await response.json();
-    newQuote();
+    getNewQuote();
   } catch (error) {
     // Catch Error Here
-    console.log(error);
+    console.log("Opps no Quotes", error);
+    getNewQuote();
   }
 }
 
 // Add Event Listeners
-newQouoteBtn.addEventListener("click", newQuote);
+newQouoteBtn.addEventListener("click", getNewQuote);
 twitterBtn.addEventListener("click", twitterQuote);
 
 // On Load
-getQuotes();
+getQuoteFromApi();

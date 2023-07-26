@@ -7,3 +7,8 @@ https://fonts.google.com/
 ## quotes api url
 https://josemguerra.github.io/quotes-api/data/quotes.json
 
+## twitter
+https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/guides/web-intent
+
+## Loader
+https://www.w3schools.com/howto/howto_css_loader.asp W3Schools - Loader
