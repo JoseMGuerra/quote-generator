@@ -3,3 +3,7 @@ https://heropatterns.com/
 
 ## font
 https://fonts.google.com/
+
+## quotes api url
+https://josemguerra.github.io/quotes-api/data/quotes.json
+
